@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _input;
     private Rigidbody rb;
 
-    public Health_Stam stats;
+    
 
     private bool isControlHeld;
 
@@ -59,14 +59,14 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame &&
             Time.time >= lastDashTime + dashCooldown &&
             _input != Vector3.zero &&
-            stats.currentBlood >= dashBloodCost &&
+         
             !isControlHeld)
         {
             isDashing = true;
             dashTimeRemaining = dashDuration;
             lastDashTime = Time.time;
             dashDirection = _input.normalized;
-            stats.TakeBlood(dashBloodCost);
+   
         }
     }
 
