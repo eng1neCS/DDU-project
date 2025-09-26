@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4976dd9a29134fadb2b19c70ee913ea
+guid: 36ec19ff39dc64ee19d05e3f208bcd40
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HSBars_0
+      name: HSBarsFill_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 76
-        width: 2079
-        height: 151
+        x: 15
+        y: 86
+        width: 2054
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d33e557e610814aef9fc1820e5ba5c9d
-      internalID: -1066196750
+      spriteID: 1e467b805c04c4e7cb6f2bd864808fe0
+      internalID: 388007778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HSBars_1
+      name: HSBarsFill_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 8
         y: 0
-        width: 1788
-        height: 67
+        width: 1758
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a78691165c4c4c4f880924b391ace5f
-      internalID: 225888231
+      spriteID: e6eca6d7c9c48447887ddc383e446d5f
+      internalID: -170590367
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 01426d8a8ee594d0b84b0aa98ae30819
     internalID: 0
     vertices: []
     indices: 
@@ -167,8 +167,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HSBars_0: -1066196750
-      HSBars_1: 225888231
+      HSBarsFill_0: 388007778
+      HSBarsFill_1: -170590367
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
