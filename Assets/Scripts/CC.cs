@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
     private Vector3 dashDirection;
     public float rotationSpeed = 10f;
+    [HideInInspector] public StaminaController _staminaController;
 
     private Vector3 _input;
     private Rigidbody rb;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        _staminaController = GetComponent<StaminaController>();
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
@@ -52,6 +54,11 @@ public class PlayerController : MonoBehaviour
         _input = new Vector3(input.x, 0, input.y);
 
         isControlHeld = Keyboard.current != null && Keyboard.current.leftShiftKey.isPressed;
+    }
+
+    public void PlayerDash()
+    {
+        _staminaController.Dashing();
     }
 
     private void TryDash()
