@@ -55,27 +55,27 @@ public class PlayerController : MonoBehaviour
 
         isControlHeld = Keyboard.current != null && Keyboard.current.leftShiftKey.isPressed;
     }
-
-    public void PlayerDash()
-    {
-        _staminaController.Dashing();
-    }
-
     private void TryDash()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame &&
             Time.time >= lastDashTime + dashCooldown &&
             _input != Vector3.zero &&
-         
             !isControlHeld)
         {
-            isDashing = true;
-            dashTimeRemaining = dashDuration;
-            lastDashTime = Time.time;
-            dashDirection = _input.normalized;
-   
+            if (_staminaController.UseStamina(_staminaController.dashCost)) // trækker 15 stamina
+            {
+                isDashing = true;
+                dashTimeRemaining = dashDuration;
+                lastDashTime = Time.time;
+                dashDirection = _input.normalized;
+            }
+            else
+            {
+                Debug.Log("Not enough stamina to dash!");
+            }
         }
     }
+
 
     private void Move()
     {

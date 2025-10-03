@@ -6,60 +6,47 @@ public class StaminaController : MonoBehaviour
     [Header("Stamina Main Parameters")]
     public float playerStamina = 100.0f;
     [SerializeField] private float maxStamina = 100.0f;
-    [SerializeField] private float dashCost = 15.0f;
+    public float dashCost = 15f;
     [HideInInspector] public bool hasRegenerated = true;
 
     [Header("Stamina Regen Parameters")]
-    [Range(0, 50)] [SerializeField] private float staminaDrain = 0.5f;
-    [Range(0, 50)] [SerializeField] private float staminaRegen = 0.5f;
+    [Range(0, 50)][SerializeField] private float staminaRegen = 0.5f;
 
     [Header("Stamina UI Elementer")]
     [SerializeField] private Image staminaProgressUI = null;
     [SerializeField] private CanvasGroup sliderCanvasGroup = null;
 
-    private PlayerController playerController;
-
-    public void Start()
-    {
-        playerController = GetComponent<PlayerController>();
-    }
     private void Update()
     {
-        if(!WeAreDashing)
+        if (playerStamina < maxStamina)
         {
-            if(playerStamina <= maxStamina - 0.01)
-            {
-                playerStamina += staminaRegen * Time.deltaTime;
-                UpdateStamina(1);
+            playerStamina += staminaRegen * Time.deltaTime;
+            playerStamina = Mathf.Clamp(playerStamina, 0, maxStamina);
+            UpdateStamina(1);
 
-                if(playerStamina >= maxStamina)
-                {
-                    sliderCanvasGroup.alpha = 0;
-                    hasRegenerated = true;
-                }
+            if (playerStamina >= maxStamina)
+            {
+                sliderCanvasGroup.alpha = 0;
+                hasRegenerated = true;
             }
         }
     }
-    public void Dashing()
+
+    // Bruges af PlayerController til at tjekke og trække stamina
+    public bool UseStamina(float amount)
     {
-        if (playerStamina >= (maxStamina * dashCost / maxStamina))
+        if (playerStamina >= amount)
         {
-            playerStamina -= dashCost;
-            playerController.PlayerDash();
+            playerStamina -= amount;
             UpdateStamina(1);
+            return true;
         }
+        return false;
     }
-    void UpdateStamina(int value)
+
+    private void UpdateStamina(int value)
     {
         staminaProgressUI.fillAmount = playerStamina / maxStamina;
-
-        if(value == 0)
-        {
-            sliderCanvasGroup.alpha = 0;
-        }
-        else
-        {
-            sliderCanvasGroup.alpha = 1;
-        }
+        sliderCanvasGroup.alpha = value == 0 ? 0 : 1;
     }
 }
