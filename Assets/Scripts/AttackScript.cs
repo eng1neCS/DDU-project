@@ -18,7 +18,7 @@ public class Attacks : MonoBehaviour
         {
             Attack attack = new SpikeHand(knifePrefab, transform, this);
             attack.UseAttack();
-            stats.TakeStam(attack1Cost);
+            //stats.TakeStam(attack1Cost);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
